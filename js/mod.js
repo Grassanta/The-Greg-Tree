@@ -19,9 +19,10 @@ let VERSION = {
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.0.1</h3><br>
 		- Pre-alpha.<br>
-		- The Beginning layer part 1.
-		- Life Power.
-		- Achievements.`
+		- The Beginning layer part 1.<br>
+		- Life Power.<br>
+		- Achievements.<br>
+		- CURRENT ENDGAME (lol) - 1000 Matter.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -60,7 +61,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e308"))
+	return player.points.gte(new Decimal("e3"))
 }
 
 
