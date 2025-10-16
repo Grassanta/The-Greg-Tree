@@ -1,13 +1,13 @@
 let modInfo = {
-	name: "The ??? Tree",
-	author: "nobody",
-	pointsName: "points",
+	name: "The Greg Tree",
+	author: "Grassanta",
+	pointsName: "matter",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
 	initialStartPoints: new Decimal (10), // Used for hard resets and new players
-	offlineLimit: 1,  // In hours
+	offlineLimit: 0,  // In hours
 }
 
 // Set your version in num and name
@@ -40,8 +40,11 @@ function canGenPoints(){
 function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
-
-	let gain = new Decimal(1)
+	let gain = new Decimal(0)
+	if (hasUpgrade('b', 11)) gain = gain.add(1)
+	if (hasUpgrade('b', 1)) gain = gain.times(2)
+	if (hasUpgrade('b', 2)) gain = gain.times(1.5)
+	if (hasUpgrade('b', 3)) gain = gain.times(upgradeEffect('b', 3))
 	return gain
 }
 
@@ -55,7 +58,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e280000000"))
+	return player.points.gte(new Decimal("e308"))
 }
 
 
